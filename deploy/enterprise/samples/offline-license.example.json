@@ -1,0 +1,6 @@
+{
+  "key": "your-license-key",
+  "expiresAt": "2027-12-31T23:59:59.000Z",
+  "signature": "<vendor-supplied-base64-signature>",
+  "algorithm": "RSA-SHA256"
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "model": "ruiyumaas/glm-5.1",
+  "small_model": "ruiyumaas/glm-5",
+  "default_agent": "ask",
+  "enabled_providers": ["ruiyumaas"],
+  "disabled_providers": ["kilo"],
+  // 企业 POC：关闭自动 compaction，避免 compact 后 autocontinue 合成用户消息导致「停不下来」。
+  // 不修改 CLI 内核；agent steps 限制 runLoop 最大步数。
+  "compaction": {
+    "auto": false,
+    "threshold_percent": 85
+  },
+  "permission": {
+    "suggest": "deny"
+  },
+  "experimental": {
+    "continue_loop_on_deny": false
+  },
+  "agent": {
+    "ask": { "steps": 2 },
+    "code": { "steps": 3 }
+  },
+  "provider": {
+    "ruiyumaas": {
+      "name": "Ruiyu MaaS",
+      "npm": "@ai-sdk/openai-compatible",
+      "api": "https://ruiyumaas.com/v1",
+      "options": {
+        "apiKey": "{env:KILO_CUSTOM_API_KEY}",
+        "baseURL": "https://ruiyumaas.com/v1"
+      },
+      "models": {
+        "glm-5": {
+          "name": "GLM-5",
+          "tool_call": true,
+          "limit": { "context": 128000, "output": 8192 }
+        },
+        "glm-5.1": {
+          "name": "GLM-5.1",
+          "tool_call": true,
+          "limit": { "context": 128000, "output": 8192 }
+        },
+        "MiniMax-M2.7": {
+          "name": "MiniMax-M2.7",
+          "tool_call": true,
+          "limit": { "context": 128000, "output": 8192 }
+        },
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro",
+          "tool_call": true,
+          "limit": { "context": 128000, "output": 8192 }
+        }
+      }
+    }
+  }
+}
