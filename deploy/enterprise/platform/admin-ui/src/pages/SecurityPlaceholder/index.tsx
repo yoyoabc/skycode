@@ -7,7 +7,7 @@ export default function SecurityPlaceholderPage() {
       <Result
         status="info"
         title="安全报告"
-        subTitle="Semgrep SAST 与扫描报告计划于 Phase 3。详见交付文档 PHASE2-PLAN.md §5.6。"
+        subTitle="Semgrep SAST 与安全扫描报告为可选扩展能力，部署与启用方式请联系软件供应商。"
       />
     </PageContainer>
   )

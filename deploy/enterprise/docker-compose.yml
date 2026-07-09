@@ -1,5 +1,5 @@
 # Phase 1 MVP — Kilo Engine + Qdrant (+ optional vLLM / APISIX)
-# Build engine image first: see docs/enterprise/PHASE1-DEPLOY.md
+# Build engine image first: see deploy/enterprise/README.md
 
 services:
   kilo-engine:
@@ -166,7 +166,7 @@ services:
     restart: unless-stopped
 
   caddy:
-    # 仅当宿主机 80/443 空闲时使用。云机已有宝塔 Nginx 时请用 nginx/README.md，勿启本服务。
+    # 仅当宿主机 80/443 空闲时使用；生产环境通常由现有反向代理终止 TLS。
     profiles: ["tls"]
     image: caddy:2-alpine
     ports:
